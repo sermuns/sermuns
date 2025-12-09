@@ -45,7 +45,7 @@ jobs:
       - name: Generate the repositories stats
         uses: cicirello/user-statistician@v1
         with:
-          image-file: mages/repos.svg
+          image-file: images/repos.svg
           colors: dark
           hide-keys: general, contributions, languages
         env:
