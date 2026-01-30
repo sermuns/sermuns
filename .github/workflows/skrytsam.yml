@@ -1,0 +1,29 @@
+name: Update stats
+
+on:
+  schedule:
+    - cron: "20 4 * * *"
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: skrytsam
+
+      - run: skrytsam sermuns -o images/languages.svg
+
+      - shell: bash
+        run: |
+          [[ "$(git status --porcelain)" == "" ]] && exit 0;
+          git config user.name 'Samuel Åkesson'
+          git config user.email 'samak519@student.liu.se'
+          git add .
+          git commit -m "update stats"
+          git push
