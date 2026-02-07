@@ -21,7 +21,7 @@ jobs:
         with:
           tool: skrytsam
 
-      - run: skrytsam sermuns -o images/languages.svg
+      - run: skrytsam sermuns languages -o images/languages.svg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
